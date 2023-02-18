@@ -3,10 +3,10 @@
         <p>Componente de mensagem</p>
     </div>
     <div>
-        <form id="burger-form">
+        <form id="burger-form" @submit="createBurger">
             <div class="input-container">
-                <label for="name">Customer Name: </label>
-                <input type="text" name="name" id="name" v-model="name" placeholder="Write your name">
+                <label for="nome">Customer Name: </label>
+                <input type="text" nome="nome" id="nome" v-model="nome" placeholder="Write your name">
             </div>
             <div class="input-container">
                 <label for="bread">Select your bread:</label>
@@ -23,9 +23,9 @@
                 </select>
             </div>
             <div id="options-container" class="input-container">
-                <label for="options" id="options-title">Select your options:</label>
+                <label for="opcionais" id="options-title">Select your options:</label>
                 <div class="checkbox-container" v-for="opcional in opcionaisdata" ::key="opcional.id">
-                    <input type="checkbox" name="options" v-model="options" :value="opcional.tipo">
+                    <input type="checkbox" name="options" v-model="opcionais" :value="opcional.tipo">
                     <span>{{opcional.tipo}}</span>
                 </div>                
             </div>
@@ -47,7 +47,6 @@ export default {
             bread: null,
             meat: null,
             opcionais: [],
-            status: "Solicitado",
             msg: null
         }
     },
@@ -58,6 +57,30 @@ export default {
             this.breads = data.paes
             this.meats = data.carnes
             this.opcionaisdata = data.opcionais
+        },
+        async createBurger(e){
+            e.preventDefault();
+            const data = {
+                nome: this.nome,
+                carne: this.meat, 
+                pao: this.bread,
+                opcionais: Array.from(this.opcionais),//funcao para enviar como um array
+                status: "Solicitado"
+            }
+            const dataJson = JSON.stringify(data)
+            
+            const req = await fetch("http://localhost:3000/burgers", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: dataJson
+            })
+            const res = await req.json()
+
+            //limpar os campos
+            this.nome = ""
+            this.meat = ""
+            this. bread = ""
+            this.opcionais = ""
         }
     },
     mounted(){
