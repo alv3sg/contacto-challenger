@@ -10,7 +10,7 @@ export default {
 </script>
 <style >
     footer{
-        height: 200px;
+        height: 10vh;
         background-color: #222;
         border-top: 4px solid #111;
         color: #FCBA03;
