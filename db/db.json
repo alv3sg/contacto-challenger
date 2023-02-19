@@ -86,8 +86,20 @@
         "Bacon",
         "Salame"
       ],
-      "status": "Solicitado",
+      "status": "Em produção",
       "id": 1
+    },
+    {
+      "nome": "Gabriel",
+      "carne": null,
+      "pao": "3 Queijos",
+      "opcionais": [
+        "Bacon",
+        "Tomate",
+        "Pepino"
+      ],
+      "status": "Solicitado",
+      "id": 2
     }
   ]
 }
