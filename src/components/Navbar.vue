@@ -1,16 +1,12 @@
 <template lang="">
     <nav>
-        <router-link to="/" id="logo-url">
-            <img :src="logo" :alt="alt" id="logo">
-        </router-link>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/orders">Pedidos</RouterLink>
+        <RouterLink to="/addcontacts">Add Contacts</RouterLink>
     </nav>
 </template>
 <script>
 export default {
     name: "Navbar",
-    props: ["logo", "alt"]
 }
 </script>
 <style>
@@ -25,10 +21,6 @@ export default {
     #logo-url{
         margin: auto;
         margin-left: 0;
-    }
-    #logo{
-        width: 40px;
-        height: 40px;
     }
     nav a {
         color: #FCBA03;

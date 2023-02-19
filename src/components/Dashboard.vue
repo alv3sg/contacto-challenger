@@ -1,37 +1,20 @@
 <template>
-    <div id="burger-table" >
+    <div id="table" >
     <Message :msg="msg" v-show="msg"/>
     <div>
-      <div id="burger-table-heading">
-        <div class="order-id">#:</div>
-        <div>Cliente:</div>
-        <div>Pão:</div>
-        <div>Carne:</div>
-        <div>Opcionais:</div>
-        <div>Ações:</div>
+      <div id="table-heading">
+        
       </div>
     </div>
-    <div id="burger-table-rows">
-      <div class="burger-table-row" v-for="burger in burgers" :key="burger.id">
-        <div class="order-number">{{ burger.id }}</div>
-            <div>{{ burger.nome }}</div>
-            <div>{{ burger.pao }}</div>
-            <div>{{ burger.carne }}</div>        
-        <div>
-          <ul >
-            <li v-for="(opcional, index) in burger.opcionais" :key="index">{{ opcional }}</li>
-          </ul>
-        </div>
-        <div>
-          <select name="status" class="status" @change="updateBurger($event, burger.id)">
-            <option value="">
-              Selecione
-            </option>
-            <option :value="s.tipo" v-for="s in status" :key="s.id" :selected="burger.status == s.tipo">{{ s.tipo }}</option>
-          </select>
-          <button class="delete-btn" @click="deleteBurger(burger.id)">Cancelar</button>
-        </div>
-      </div>
+    <div id="table-rows">
+      <div class="table-row" v-for="contact in contacts" :key="contact.id">
+        <div class="order-number">{{ contact.id }}</div>
+            <div> Name: {{ contact.nome }}</div>
+            <div>Phone: {{ contact.phone }}</div>
+            <div>E-mail: {{ contact.email }}</div>  
+            <div>
+              <button class="delete-btn" @click="deleteContact(contact.id)">Delete</button></div>    
+            </div>
     </div>
   </div>
 </template>
@@ -41,30 +24,33 @@ export default {
     name: "Dashboard",
     data(){
         return{
-            burgers: null,
-            burgers_id: null,
-            status: [],
-            msg: null
+          contacts: null,
+          contacts_id: null,
+          status: [],
+          msg: null
         }
     },
     methods:{
-        async getPedidos(){
+        async routeResolv(){
+          return `/DetailsView/${e.target.id}`
+        },
+        async getCaontacts(){
 
-            const req = await fetch("http://localhost:3000/burgers")
+            const req = await fetch("http://localhost:3000/contact")
             const data = await req.json()
 
-            this.burgers = data
+            this.contacts = data
         
             this.getStatus()
         },
         async getStatus(){
-            const req = await fetch("http://localhost:3000/status")
+            const req = await fetch("http://localhost:3000/options")
             const data = await req.json()
 
             this.status = data
         },
-        async deleteBurger(id){
-            const req = await fetch(`http://localhost:3000/burgers/${id}`, {
+        async deleteContact(id){
+            const req = await fetch(`http://localhost:3000/contact/${id}`, {
                 method: "DELETE"
             })
             const res = await req.json()
@@ -73,59 +59,45 @@ export default {
 
             //Limpar mensagem
             setTimeout(()=>this.msg = "" ,3000)
-            this.getPedidos()
-        },
-        async updateBurger(event, id){
-            const option = event.target.value
-            const dataJson = JSON.stringify({status: option})
-
-            const req = await fetch(`http://localhost:3000/burgers/${id}`, {
-                method: "PATCH",
-                headers: {"Content-Type": "application/json"},
-                body: dataJson
-            })
-            const res = await req.json()
-            this.msg =`Pedido Nº${res.id} atualiado para ${res.status} com sucesso!`
-
-            //Limpar mensagem
-            setTimeout(()=>this.msg = "" ,3000)
-        }
+            this.getCaontacts()
+        },        
     },
     mounted(){
-        this.getPedidos()
+        this.getCaontacts()
     },
     components: {
-        Message
-    }
+    Message,
+}
 }
 </script>
 <style scoped>
-    #burger-table {
+    #table {
     max-width: 1200px;
     margin: 0 auto;
   }
-  #burger-table-heading,
-  #burger-table-rows,
-  .burger-table-row {
+  #table-heading,
+  #table-rows,
+  .table-row {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
   }
-  #burger-table-heading {
+  #table-heading {
     font-weight: bold;
     padding: 12px;
     border-bottom: 3px solid #333;
   }
-  .burger-table-row {
+  .table-row {
     width: 100%;
     padding: 12px;
     border-bottom: 1px solid #CCC;
   }
-  #burger-table-heading div,
-  .burger-table-row div {
+  #table-heading div,
+  .table-row div {
     width: 19%;
   }
-  #burger-table-heading .order-id,
-  .burger-table-row .order-number {
+  #table-heading .order-id,
+  .table-row .order-number {
     width: 5%;
   }
   select {
@@ -142,10 +114,13 @@ export default {
     margin: 0 auto;
     cursor: pointer;
     transition: .5s;
+    margin-right: 10px;
+    margin-top: 10px;
   }
   
   .delete-btn:hover {
     background-color: transparent;
     color: #222;
+    
   }
 </style>
