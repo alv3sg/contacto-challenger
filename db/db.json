@@ -79,144 +79,15 @@
   ],
   "burgers": [
     {
-      "nome": "Matheus Battisti",
+      "nome": "Gabriel Alves Rosario",
       "carne": "Picanha",
       "pao": "Italiano Branco",
       "opcionais": [
         "Bacon",
-        "Salame",
-        "Cebola roxa"
+        "Salame"
       ],
-      "status": "Finalizado",
+      "status": "Solicitado",
       "id": 1
-    },
-    {
-      "nome": "João Coelho",
-      "carne": "Maminha",
-      "pao": "3 Queijos",
-      "opcionais": [
-        "Salame",
-        "Cebola roxa"
-      ],
-      "status": "Solicitado",
-      "id": 4
-    },
-    {
-      "nome": null,
-      "carne": null,
-      "pao": null,
-      "opcionais": [],
-      "status": "Solicitado",
-      "id": 5
-    },
-    {
-      "nome": null,
-      "carne": "Maminha",
-      "pao": "Italiano Branco",
-      "opcionais": [
-        "Cebola roxa",
-        "Salame"
-      ],
-      "status": "Solicitado",
-      "id": 6
-    },
-    {
-      "nome": null,
-      "carne": "Maminha",
-      "pao": "Italiano Branco",
-      "opcionais": [
-        "Cebola roxa",
-        "Salame"
-      ],
-      "status": "Solicitado",
-      "id": 7
-    },
-    {
-      "nome": null,
-      "carne": "Maminha",
-      "pao": "Italiano Branco",
-      "opcionais": [
-        "Cebola roxa",
-        "Salame"
-      ],
-      "status": "Solicitado",
-      "id": 8
-    },
-    {
-      "nome": null,
-      "carne": "Maminha",
-      "pao": "Italiano Branco",
-      "opcionais": [
-        "Cebola roxa",
-        "Salame"
-      ],
-      "status": "Solicitado",
-      "id": 9
-    },
-    {
-      "nome": null,
-      "carne": "Maminha",
-      "pao": "Italiano Branco",
-      "opcionais": [
-        "Cebola roxa",
-        "Salame"
-      ],
-      "status": "Solicitado",
-      "id": 10
-    },
-    {
-      "nome": "Gabriel Alves Rosario",
-      "carne": "Maminha",
-      "pao": "Italiano Branco",
-      "opcionais": [
-        "Cebola roxa",
-        "Salame"
-      ],
-      "status": "Solicitado",
-      "id": 11
-    },
-    {
-      "nome": "Gabriel Alves Rosario",
-      "carne": "Alcatra",
-      "pao": "Italiano Branco",
-      "opcionais": [
-        "Bacon",
-        "Salame"
-      ],
-      "status": "Solicitado",
-      "id": 12
-    },
-    {
-      "nome": "Gabriel Alves Rosario",
-      "carne": "Alcatra",
-      "pao": "Italiano Branco",
-      "opcionais": [
-        "Bacon",
-        "Salame"
-      ],
-      "status": "Solicitado",
-      "id": 13
-    },
-    {
-      "nome": "Gabriel Alves Rosario",
-      "carne": "Picanha",
-      "pao": "3 Queijos",
-      "opcionais": [
-        "Bacon",
-        "Salame"
-      ],
-      "status": "Solicitado",
-      "id": 14
-    },
-    {
-      "nome": "sara",
-      "carne": "Maminha",
-      "pao": "Integral",
-      "opcionais": [
-        "Bacon"
-      ],
-      "status": "Solicitado",
-      "id": 15
     }
   ]
 }
